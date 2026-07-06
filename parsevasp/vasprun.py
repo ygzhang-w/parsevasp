@@ -704,13 +704,13 @@ class Xml(BaseParser):
 
                 if extract_energies:
                     # Extrapolated energy
-                    if event == 'start' and element.tag == 'i' and element.attrib['name'] == 'e_0_energy':
+                    if event == 'end' and element.tag == 'i' and element.attrib['name'] == 'e_0_energy':
                         totens[calc].update({'energy_extrapolated_final': float(element.text)})
                     # Free energy
-                    if event == 'start' and element.tag == 'i' and element.attrib['name'] == 'e_fr_energy':
+                    if event == 'end' and element.tag == 'i' and element.attrib['name'] == 'e_fr_energy':
                         totens[calc].update({'energy_free_final': float(element.text)})
                     # Energy without entropy
-                    if event == 'start' and element.tag == 'i' and element.attrib['name'] == 'e_wo_entrp':
+                    if event == 'end' and element.tag == 'i' and element.attrib['name'] == 'e_wo_entrp':
                         totens[calc].update({'energy_no_entropy_final': float(element.text)})
 
                 if extract_eigenvalues:
